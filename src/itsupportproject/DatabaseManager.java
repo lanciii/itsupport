@@ -15,12 +15,42 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Richard
  */
+
+
+/*
+        try {
+            final String DBURL = "jdbc:sqlserver://127.0.0.1\\MSSQLEXPRESS:1434;databaseName=soaUppg3";
+            final String USER = "admin";
+            final String PWD = "12345";
+            Connection conn = null; //Hanterar uppkoppling
+            if (conn == null){    
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                conn = DriverManager.getConnection(DBURL, USER, PWD);
+            }
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO Resultat(StudentID,AppCode,ProvNr,Betyg) VALUES(?,?,?,?)");
+            stmt.setString(1, studentID);
+            stmt.setString(2, appCode);
+            stmt.setString(3, provnr);
+            stmt.setString(4, betyg);
+            stmt.executeUpdate();
+
+            if (conn != null) {
+                conn.close();
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(RegRes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+*/
 public class DatabaseManager {
    
     private static final String DBURL = "jdbc:sqlserver://127.0.0.1\\MSSQLEXPRESS:1434;databaseName=itsupport";
@@ -51,24 +81,48 @@ public class DatabaseManager {
        
     }
     
-    public static void connectToDb() throws ClassNotFoundException, SQLException{
+    public static void connectToDb(){
        //Koppla upp mot db
-        if (conn == null){
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            conn = DriverManager.getConnection(DBURL, USER, PWD);
+        try {
+            if (conn == null){
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                conn = DriverManager.getConnection(DBURL, USER, PWD);
+            } 
+        } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
             
-    public static void closeDbConnection() throws SQLException{
+    public static void closeDbConnection(){
         //Stäng uppkoppling
-        if (conn != null) {
-            conn.close();
+        try {
+            if (conn != null) {
+                conn.close();
+            } 
+            
+        }catch (SQLException ex) {
+            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public static void InsertAssignment(){ 
-        //lägg som inparametrar allting vi skickar från ärende. på nåt sätt måste vi ju rulla igenom alla uppgifter för ärendet och lägga in dem också.
-     
+    public static void InsertAssignment(String status, double budgetTid, double tidsAtgang, String beskrivning, int prio){ 
+        try {
+            //lägg som inparametrar allting vi skickar från ärende. på nåt sätt måste vi ju rulla igenom alla uppgifter för ärendet och lägga in dem också.
+            
+            connectToDb();
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO arende(status, budgetTid, tidsAtgang, beskrivning, prio) VALUES(?,?,?,?,?)");
+            stmt.setString(1, status);
+            stmt.setDouble(2, budgetTid);
+            stmt.setDouble(3, tidsAtgang);
+            stmt.setString(4, beskrivning);
+            stmt.setInt(5, prio);
+            stmt.executeUpdate();
+            closeDbConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        
     };
     
     /*

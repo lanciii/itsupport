@@ -86,11 +86,10 @@ public class Arende {
     public String getKomp(){
         return uppgiftslista.get(uppgiftslista.size()-1).getKompetensKrav();
     }
+    
+    public ArrayList<Arbetsuppgift> getArbUppg(){
+        return this.uppgiftslista;
+    }
+    
 
-    
-   
-   
-    
-    
-        
 }
