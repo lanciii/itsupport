@@ -105,17 +105,16 @@ public class DatabaseManager {
         }
     }
     
-    public static void InsertAssignment(String status, double budgetTid, double tidsAtgang, String beskrivning, int prio){ 
-        try {
-            //lägg som inparametrar allting vi skickar från ärende. på nåt sätt måste vi ju rulla igenom alla uppgifter för ärendet och lägga in dem också.
-            
+    public static void InsertAssignment(int arendeID, String status, double budgetTid, double tidsAtgang, String beskrivning, int prio){ 
+        try { 
             connectToDb();
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO arende(status, budgetTid, tidsAtgang, beskrivning, prio) VALUES(?,?,?,?,?)");
-            stmt.setString(1, status);
-            stmt.setDouble(2, budgetTid);
-            stmt.setDouble(3, tidsAtgang);
-            stmt.setString(4, beskrivning);
-            stmt.setInt(5, prio);
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO arende(arendeID, status, budgetTid, tidsAtgang, beskrivning, prio) VALUES(?,?,?,?,?,?)");
+            stmt.setInt(1, arendeID);
+            stmt.setString(2, status);
+            stmt.setDouble(3, budgetTid);
+            stmt.setDouble(4, tidsAtgang);
+            stmt.setString(5, beskrivning);
+            stmt.setInt(6, prio);
             stmt.executeUpdate();
             closeDbConnection();
         } catch (SQLException ex) {
