@@ -45,8 +45,6 @@ public class Arbetsuppgift {
         // skapa metod i databasemanager men se över databasen först
     }
     
-    
-    
     // Går säkert skriva om snyggare med "index" osv. Detta är iaf rätt tydligt.
 
     public String getKompetensKrav(){
