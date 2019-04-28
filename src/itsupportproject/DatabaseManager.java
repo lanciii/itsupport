@@ -53,7 +53,7 @@ import javax.swing.table.DefaultTableModel;
 */
 public class DatabaseManager {
    
-    private static final String DBURL = "jdbc:sqlserver://127.0.0.1\\MSSQLEXPRESS:1434;databaseName=itsupport";
+    private static final String DBURL = "jdbc:sqlserver://DESKTOP-02OAE1F\\SQLEXPRESS;databaseName=oopuDB";
     private static final String USER = "admin";
     private static final String PWD = "12345";
     private static ArrayList<Personal> hamtadPersDb = new ArrayList<>();

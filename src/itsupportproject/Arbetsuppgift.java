@@ -7,7 +7,7 @@ package itsupportproject;
 
 /**
  *
- * @author Richard
+ * @author Richardasdasd
  */
 public class Arbetsuppgift {
     

@@ -355,7 +355,7 @@ public class DesktopGUI extends javax.swing.JFrame {
         labelTilldel.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         labelTilldel.setText("Tilldela personal");
 
-        comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pågående", "Påbörjad", "Avslutad" }));
+        comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Registrerad", "Påbörjad", "Avslutad" }));
 
         txtAreaUppgBesk.setColumns(20);
         txtAreaUppgBesk.setRows(5);
@@ -379,7 +379,6 @@ public class DesktopGUI extends javax.swing.JFrame {
             }
         ));
         tableTilldela.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tableTilldela.setShowHorizontalLines(true);
         jScrollPane4.setViewportView(tableTilldela);
         tableTilldela.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
@@ -435,7 +434,7 @@ public class DesktopGUI extends javax.swing.JFrame {
                             .addComponent(comboArbuppg, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(63, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelArendeuppgLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(264, Short.MAX_VALUE)
                 .addComponent(labelArendeuppg)
                 .addGap(220, 220, 220))
         );
@@ -495,7 +494,7 @@ public class DesktopGUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabPanelSkapaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabPanelSkapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelArendeuppg, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                    .addComponent(panelArendeuppg, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
                     .addComponent(panelSkapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelTillagda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -794,7 +793,7 @@ public class DesktopGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1319, Short.MAX_VALUE)
+                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1319, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

@@ -13,23 +13,23 @@ public class Program {
     static ArrayList<Personal> perslista = new ArrayList<>();
     
     public static void main(String[] args) throws ClassNotFoundException, SQLException{
-        // TODO code application logic here
-
+        
+        // Skapa upp grafiskt gränssnitt
         DesktopGUI gui = new DesktopGUI();
+        gui.setVisible(true);        
+        
+        // Populera arraylists med ärenden och personal
         hamtaPersonal();
         hamtaArenden();
-        gui.setVisible(true);
-        
-        
     }   
     
     public static void hamtaArenden() throws ClassNotFoundException, SQLException{ 
-        //döp om skickapersdb till typ populeraPerslista?
+        // Hämtar registrerade ärenden från databasen och populerar ärendelistan
         arendelista = DatabaseManager.populeraArendenFranDb();
     }
     
     public static void hamtaPersonal() throws ClassNotFoundException, SQLException{
-        //döp om skickapersdb till typ populeraPerslista?
+        // Hämtar personaldata från databasen och populerar personallistan
         perslista = DatabaseManager.populeraPerslistaFranDb();
     }
     
@@ -40,24 +40,23 @@ public class Program {
     }
     
     public static void skapaArende(int p, String b, float bt, String s){
+        // Skapar upp en ny ärendeinstans och placerar den i ärendelistan.
         Arende nyttArende = new Arende(p, b, bt,s);
         arendelista.add(nyttArende);
     }
     
     public static void laggTillUppgift(String typ, String komp, String stat, double tid, String besk, int tilld){
-        //Aktuellt ärende är alltid senaste tillagda - lägg till uppgift i listans sista ärende
-            arendelista.get(arendelista.size()-1).laggTillUppgift(typ, komp, stat, tid, besk, tilld);
-            
-                    
+        // Lägger till arbetsuppgift i aktuell ärendeinstans. Aktuell ärendeinstans är alltid senaste tillagda.
+        arendelista.get(arendelista.size()-1).laggTillUppgift(typ, komp, stat, tid, besk, tilld);
     }
     
     public static ArrayList<Arbetsuppgift> getUppg(){
+        // Hämtar arbetsuppgifterna som är registrerade på det aktuella ärendet
         return arendelista.get(arendelista.size()-1).getUppgifter(); 
     }
     
     public static String getPersNamn(int id){
         String fornamnEfternamn = "";
-        
         
         for(int i = 0; i < perslista.size(); i++){
             if(perslista.get(i).getPersID() == id){
